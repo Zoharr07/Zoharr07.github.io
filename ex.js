@@ -18,8 +18,7 @@ var cardInfo = {
     top: 0,
     left: 0,
     margin: 3,
-    coverColor: "green",
-    backGroudColor: "orange",
+    coverColor: "#cceeff",
     backGroundImg: "./",
     imageNum: 0
 }
@@ -35,10 +34,11 @@ let count = row * col;
 
 makeRandomListCard();
 
+document.body.style.backgroundColor = "#e6ffcc";
 var mainBG = document.createElement("div")
 document.body.appendChild(mainBG)
 mainBG.style.width = col * (cardInfo.width + cardInfo.margin * 2).toString() + "px";
-mainBG.style.backgroundColor = "blue";
+mainBG.style.backgroundColor = "#ccffcc";
 mainBG.style.display = "flex";
 mainBG.style.flexWrap = "wrap";
 
