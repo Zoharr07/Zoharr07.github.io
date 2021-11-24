@@ -62,7 +62,6 @@ export class GameController extends Node {
             this.instanceBoardGame()
             updateScore();
         }
-
     }
 
     instanceBoardGame() {
@@ -127,9 +126,10 @@ function onClickCard(card) {
         }, 2000, this, openedCard);
     } else {
         updateScore(-500)
-        let tl = gsap.timeline({ repeat: 0, repeatDelay: 0 })
+        //let tl = gsap.timeline({ repeat: 0, repeatDelay: 0 })
         tl.to(openedCard[0].element, { scaleX: 0, duration: 0.5 })
         tl.to(openedCard[0].element, { scaleX: 1, duration: 0.5 })
+
         tl.to(this.element, { scaleX: 0, duration: 0.5 })
         tl.to(this.element, { scaleX: 1, duration: 0.5 })
 
