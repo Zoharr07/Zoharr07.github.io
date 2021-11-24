@@ -4,16 +4,16 @@ export class Label extends Node {
         super();
         this._string = string || "";
         this.string = this._string;
-        this.view.style.color = 'black';
-        this.setPosition(this.width/2 - 5, this.height/2 - 5)
+        this.element.style.color = 'black';
+        this.element.style.fontSize = "x-large";
+        this.setSize(50, 50);
     }
 
     get string() {
         return this._string;
     }
-
     set string(value) {
         this._string = value;
-        this.view.innerHTML = this._string;
+        this.element.innerHTML = this._string;
     }
 }

@@ -1,14 +1,13 @@
 export class Node {
-    constructor(){
+    constructor() {
         this._x = 0;
         this._y = 0;
         this._width = 100;
         this._height = 100;
         this._children = [];
-        this.initView();
-        this.view.style.display = "";
-        this.view.style.position = "absolute";
-        this.view.style.borderRadius = "8px";
+        this.element;
+        this._active = true;
+        this.initElement();
     }
 
     get x() {
@@ -16,7 +15,7 @@ export class Node {
     }
     set x(value) {
         this._x = value;
-        this.view.style.left = this._x + 'px';
+        this.element.style.left = this._x + 'px';
     }
 
     get y() {
@@ -24,7 +23,7 @@ export class Node {
     }
     set y(value) {
         this._y = value;
-        this.view.style.top = this._y + 'px';
+        this.element.style.top = this._y + 'px';
     }
 
     get width() {
@@ -32,7 +31,7 @@ export class Node {
     }
     set width(value) {
         this._width = value;
-        this.view.style.width = this._width + 'px';
+        this.element.style.width = this._width + 'px';
     }
 
     get height() {
@@ -40,41 +39,39 @@ export class Node {
     }
     set height(value) {
         this._height = value;
-        this.view.style.height = this._height + 'px';
+        this.element.style.height = this._height + 'px';
     }
 
-    
-    active(isActive) {
+    getActive() {
+        return this._active;
+    }
+    setActive(isActive) {
         this._active = isActive;
-        if(isActive) this.view.style.display = "";
-        else this.view.style.display = "none";
-        
+        if (isActive) this.element.style.display = "";
+        else this.element.style.display = "none";
+    }
+    initElement() {
+        this.element = document.createElement('div');
+        this.setSize(this._width, this._height);
+        this.element.style.backgroundRepeat = "no-repeat";
+        this.element.style.display = "";
+        this.element.style.position = "absolute";
+        this.element.style.borderRadius = "8px";
+        this.element.style.userSelect = "none";
     }
 
-    initView(){
-        this.view = document.createElement('div');
-        this.setSize(this._width, this._height)
-        // this.view.style.backgroundSize = "contain";
-        this.view.style.backgroundRepeat = "no-repeat";
-    }
-    setBackGround(backGround){
-        this.view.style.backgroundImage = backGround;
-        this.view.style.backgroundSize = "contain";
-    }
-
-    addChild(node){
+    addChild(node) {
         this._children.push(node);
-        this.view.appendChild(node.view);
-    }
-    
-    setSize(widths, heights){
-        this.width = widths;
-        this.height = heights;
+        this.element.appendChild(node.element);
     }
 
-    setPosition(posX, posY){
+    setSize(w, h) {
+        this.width = w;
+        this.height = h;
+    }
+
+    setPosition(posX, posY) {
         this.x = posX;
         this.y = posY;
     }
-    
 }

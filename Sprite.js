@@ -1,9 +1,16 @@
 import { Node } from './Node.js';
 export class Sprite extends Node {
-    initView() {
-        this.view = document.createElement('img');
+    constructor(width, height, src) {
+        super();
+        this.initView();
+        this.element.style.position = "absolute";
+        this.setSize(width, height);
+        this.setImage(src)
     }
-    setImage(src){
-        this.view.src = src;
+    initView() {
+        this.element = document.createElement('img');
+    }
+    setImage(src) {
+        this.element.src = src;
     }
 }
