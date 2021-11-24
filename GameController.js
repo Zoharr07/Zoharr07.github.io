@@ -87,7 +87,7 @@ function makeRandomListCard(numberCard, mulNumber) {
             cardList.push(i);
         }
     }
-    //cardList.sort(() => Math.random() - 0.5);
+    cardList.sort(() => Math.random() - 0.5);
     return cardList;
 }
 
