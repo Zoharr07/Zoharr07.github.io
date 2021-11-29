@@ -32,7 +32,7 @@ export class GameController extends Node {
         this._scoreTotal = 10000;
         if (gameStatus === "new") {
             this._cardValue = this._initValueCard(10, 2);
-            //this._cardValue = this._shuffeCard(this._cardValue);
+            this._cardValue = this._shuffeCard(this._cardValue);
             if (this._cardLists.length == 0) {
                 this.instanceCard();
             } else {
