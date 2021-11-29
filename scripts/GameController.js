@@ -79,6 +79,7 @@ export class GameController extends Node {
                         this._playSound("././sound/shuffe.mp3", 0)
                         card.setActive(true);
                         card.flipClose();
+                        card.showCover(true);
                         this._playSound("././sound/distribute.wav", 1.25)
                     })
                     .to(card, { duration: 1, ease: "elastic.inOut(1.5, 1)", x: posX, y: posY }, 1)
@@ -94,6 +95,7 @@ export class GameController extends Node {
             this._cardLists[i].element.zIndex = "0";
             this._cardLists[i].setActive(true);
             this._cardLists[i].changeValueCard(this._cardValue[i])
+            this._cardLists[i].showCover(true);
         }
         this._cardRemain = this._cardLists.length;
     }
