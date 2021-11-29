@@ -32,7 +32,7 @@ export class GameController extends Node {
         this._scoreTotal = 10000;
         if (gameStatus === "new") {
             this._cardValue = this._initValueCard(10, 2);
-            this._cardValue = this._shuffeCard(this._cardValue);
+            //this._cardValue = this._shuffeCard(this._cardValue);
             if (this._cardLists.length == 0) {
                 this.instanceCard();
             } else {
@@ -127,23 +127,23 @@ export class GameController extends Node {
         this.addChild(this._playButton);
         this._playButton.element.addEventListener("mousedown", this._onStartGame.bind(this));
 
-        this._replayButton = new Button("RePlay", (this._colum - 2.3) * this._cardWidth, this._offsetX * 1.2 + this._row * (this._cardHeight + this._offsetX));
-        this.addChild(this._replayButton);
-        this._replayButton.element.addEventListener("mousedown", this._onReplayGame.bind(this));
-        this._replayButton.hideButton();
+        this._reTryButton = new Button("ReTry", (this._colum - 2.3) * this._cardWidth, this._offsetX * 1.2 + this._row * (this._cardHeight + this._offsetX));
+        this.addChild(this._reTryButton);
+        this._reTryButton.element.addEventListener("mousedown", this._onReplayGame.bind(this));
+        this._reTryButton.hideButton();
     }
 
     _onStartGame() {
         this._playSound("././sound/click.mp3", 0)
         this._playButton.hideButton();
-        this._replayButton.hideButton();
+        this._reTryButton.hideButton();
         this.initGame("new");
     }
 
     _onReplayGame() {
         this._playSound("././sound/click.mp3", 0)
         this.initGame("replay");
-        this._replayButton.hideButton();
+        this._reTryButton.hideButton();
         this._playButton.hideButton();
     }
 
@@ -209,7 +209,7 @@ export class GameController extends Node {
                 .add(() => {
                     confirm("You Lose Game");
                     this._playButton.showButton();
-                    this._replayButton.showButton();
+                    this._reTryButton.showButton();
                 });
             return;
         }
@@ -241,11 +241,11 @@ export class GameController extends Node {
     _animScore(scoreView, pointAdd) {
         let numAdd = Math.abs(pointAdd / 100);
         let wait = gsap.timeline({ repeat: 0, repeatDelay: 0 });
-        wait.delay(0.9)
+        wait.delay(0.8)
         wait.add(() => {
             for (let i = 1; i <= numAdd; i++) {
                 let tl = gsap.timeline({ repeat: 0, repeatDelay: 0 });
-                tl.delay(0.05 * i)
+                tl.delay(0.03 * i)
                 tl.add(() => {
                     this._scoreTotal += pointAdd / numAdd;
                     scoreView.innerHTML = "Score: " + this._scoreTotal;
