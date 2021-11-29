@@ -5,6 +5,7 @@ export class Cover extends Node {
         this.setCoverColor("url('./img/backCard.jpeg')");
         this.setSize(width, height);
     }
+
     setCoverColor(color) {
         this.element.style.backgroundImage = color;
         this.element.style.backgroundSize = "contain";
